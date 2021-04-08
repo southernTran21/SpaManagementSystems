@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./style/main.scss";
+import "antd/dist/antd.css";
+import Login from "./layout/login";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route path="/" exact component={() => <Login />} />
+                {/* <Route
+                    path="/admin"
+                    component={({ match }) => <Admin match={match} />}
+                />
+                <Route
+                    path="/muon-csvc"
+                    component={({ match }) => <NhanVien match={match} />}
+                /> */}
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;

@@ -1,0 +1,25 @@
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+// END
+
+// Function: Use for flexbox
+@mixin flexBox(
+    $justify: flex-start,
+    $align: flex-start,
+    $dir: row,
+    $wrap: nowrap
+) {
+    display: flex;
+    justify-content: $justify;
+    flex-direction: $dir;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+@mixin centerFlexBox() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// END

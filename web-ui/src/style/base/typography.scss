@@ -1,0 +1,128 @@
+html {
+    font-size: 62.5%;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+
+@media screen and (min-width: 389px){
+    html{
+        font-size: 64.834%;
+    }
+}
+@media screen and (min-width: 400px){
+    html{
+        font-size: 66.67%;
+    }
+}
+@media screen and (min-width: 425px){
+    html{
+        font-size: 70.84%;
+    }
+}
+@media screen and (min-width: 450px){
+    html{
+        font-size: 75%;
+    }
+}
+@media screen and (min-width: 480px){
+    html{
+        font-size: 80%;
+    }
+}
+@media screen and (min-width: 510px){
+    html{
+        font-size: 85%;
+    }
+}
+@media screen and (min-width: 540px){
+    html{
+        font-size: 90%;
+    }
+}
+@media screen and (min-width: 570px){
+    html{
+        font-size: 95%;
+    }
+}
+@media screen and (min-width: 600px){
+    html{
+        font-size: 100%;
+    }
+}
+@media screen and (min-width: 630px){
+    html{
+        font-size: 105%;
+    }
+}
+@media screen and (min-width: 660px){
+    html{
+        font-size: 110%;
+    }
+}
+@media screen and (min-width: 690px){
+    html{
+        font-size: 115%;
+    }
+}
+@media screen and (min-width: 720px){
+    html{
+        font-size: 120%;
+    }
+}
+@media screen and (min-width: 768px){
+    html{
+        font-size: 128%;
+    }
+}
+
+@media screen and (min-width: 769px){
+    html{
+        font-size: 37.54882813%;
+    }
+}
+@media screen and (min-width: 896px){
+    html{
+        font-size: 43.75%;
+    }
+}
+@media screen and (min-width: 1024px){
+    html{
+        font-size: 50%;
+    }
+}
+@media screen and (min-width: 1280px){
+    html{
+        font-size: 62.5%;
+    }
+}
+
+
+@media screen and (max-width: 360px){
+    html{
+        font-size: 60%;
+    }
+}
+@media screen and (max-width: 350px){
+    html{
+        font-size: 58.3%;
+    }
+}
+@media screen and (max-width: 325px){
+    html{
+        font-size: 54.167%;
+    }
+}
+@media screen and (max-width: 320px){
+    html{
+        font-size: 53.3125%;
+    }
+}
