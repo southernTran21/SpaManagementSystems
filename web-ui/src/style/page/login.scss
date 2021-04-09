@@ -1,0 +1,53 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    @include flexBox(space-between, center, column);
+    &-wave-up,
+    &-wave-dow {
+        width: 100%;
+    }
+    &-form {
+        @include flexBox(flex-start, center, column);
+    }
+    &-title {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+    &-logo {
+        width: 60rem;
+        height: 65rem;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &-input {
+        @include flexBox(flex-start, center);
+        border: 1px solid $primary-color;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        input {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-size: 2rem;
+            width: 30rem;
+        }
+        .ant-input:focus,
+        .ant-input-focused {
+            border: none;
+            box-shadow: none;
+        }
+    }
+    &-button-submit{
+        margin-top: 2rem;
+        background-color: $primary-color;
+        font-weight: bold;
+        font-size: 2rem;
+        padding: 1rem 4rem;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+}
