@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -42,7 +43,26 @@ namespace WebAPI.Controllers
             return new JsonResult(table);
         }
     
-    
+        [HttpPost]
+        public JsonResult Post(Account account)
+        {
+            string query = @"SELECT [id] ,[username] ,[password] ,[accountName] ,[idQuyen] FROM [dbo].[Account] where username = '"+account.username+@"' and  password = '"+account.password+@"'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+            SqlDataReader myreader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myreader = myCommand.ExecuteReader();
+                    table.Load(myreader);
+                    myreader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
     
     }
 }
