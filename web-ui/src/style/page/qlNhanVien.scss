@@ -1,0 +1,106 @@
+.ql-nhan-vien {
+    padding: 1rem;
+    &__header {
+        @include flexBox(flex-end, center);
+        .ant-btn-primary {
+            background: $primary-color;
+            border-color: $primary-color;
+        }
+        .ant-btn-primary:hover,
+        .ant-btn-primary:focus {
+            background-color: $color-hover-button;
+            border-color: $color-hover-button;
+        }
+        .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
+            border-color: $color-hover-button;
+            box-shadow: none;
+        }
+        .ant-input-search .ant-input:hover, .ant-input-search .ant-input:focus{
+            border-color: $color-hover-button;
+        }
+        .ant-input-search, .ant-input-affix-wrapper{
+            border-color: #b6b6b6;
+            box-shadow: none;
+        }
+    }
+    &__them-moi{
+        height: 32px;
+        font-size: 1.4rem;
+        @include centerFlexBox();
+        background-color: green;
+        color: white;
+        padding: 0 1.5rem;
+        margin-left: 2rem;
+        cursor: pointer;
+        transition: 0.25s all ease-in-out;
+        border-radius: 3px;
+        &:hover{
+            background-color: rgb(0, 189, 0);
+        }
+    }
+    &__data{
+        margin-top: 2rem;
+    }
+    &__table-head{
+        @include flexBox();
+        width: 100%;
+        background-color: $primary-color;
+        padding: .5rem 0;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+    &__table-item{
+        @include flexBox();
+        padding: 1rem 0;
+        border-bottom: 1px solid #e6e6e6;
+        transition: 0.25s all ease-in-out;
+        font-size: 1.4rem;
+        &:nth-last-child(1){
+            border-bottom: none;
+        }
+        &:hover{
+            background-color: $color-hoover;
+        }
+    }
+    &__column1{
+        width: 5%;
+        @include centerFlexBox();
+    }
+    &__column2{
+        width: 20%;
+    }
+    &__column3{
+        width: 15%;
+    }
+    &__column4{
+        width: 10%;
+    }
+    &__column5{
+        width: 10%;
+    }
+    &__column6{
+        width: 10%;
+    }
+    &__column7{
+        width: 15%;
+        @include centerFlexBox();
+    }
+    &__column1, &__column2, &__column3,&__column4,&__column5,&__column6, &__column7{
+        margin: 0 1%;
+    }
+    &__form-input{
+        margin-top: 1rem;
+        &:nth-child(1){
+            margin-top: 0;
+        }
+        &__title{
+            font-weight: bold;
+        }
+    }
+    &__add-form{
+        .ant-modal-title{
+            font-weight: bold;
+        }
+    }
+    
+}

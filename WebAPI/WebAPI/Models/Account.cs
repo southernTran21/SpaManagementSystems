@@ -7,9 +7,11 @@ namespace WebAPI.Models
 {
     public class Account
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int idQuyen { get; set; }
+        public string accountName { get; set; }
+        public int status { get; set; }
     }
 }

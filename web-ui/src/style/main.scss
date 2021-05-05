@@ -3,8 +3,9 @@
 @import "./base/reset.scss";
 @import "./base/typography.scss";
 // COMPONENT
-
+@import "./page/navbar.scss";
 // PAGE
 @import "./page/login.scss";
-
-//edit 2
+@import "./page/qlNhanVien.scss";
+@import "./page/qlMyPham.scss";
+@import "./page/qlKho.scss";

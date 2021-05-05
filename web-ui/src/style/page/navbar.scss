@@ -1,0 +1,180 @@
+.navbar {
+    @include flexBox(space-between, center);
+    padding: 0 1.5rem;
+    height: 5rem;
+    background-color: rgb(0 0 0 / 82%);
+
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+
+    &__icon-menu {
+        @include flexBox(flex-start, center);
+        color: $primary-color;
+        font-size: 2rem;
+        width: 3.5rem;
+    }
+    &__logo {
+        width: 14rem;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__dropdown-account {
+        @include flexBox(flex-end, center);
+        @include box(3.5rem, 2rem);
+
+        .ant-btn:empty {
+            display: none;
+        }
+        .ant-btn {
+            border-color: transparent !important;
+            background-color: transparent !important;
+            color: $primary-color;
+            font-size: 2rem !important;
+            line-height: 0;
+            width: auto;
+            height: auto;
+            padding: 0;
+        }
+        .ant-space-item {
+            @include centerFlexBox();
+        }
+        .ant-btn-icon-only > * {
+            font-size: 2rem;
+        }
+        .ant-btn:hover,
+        .ant-btn:focus {
+            color: $primary-color;
+        }
+    }
+
+    &__drawer {
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer */
+        -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+        -webkit-user-select: none; /* Chrome, Safari, and Opera */
+        -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+        .ant-menu {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+        }
+        .ant-drawer-body {
+            padding: 0;
+        }
+        .ant-dropdown-menu-item,
+        .ant-dropdown-menu-submenu-title {
+            font-size: 1.4rem;
+            
+        }
+        .ant-menu-vertical > .ant-menu-item,
+        .ant-menu-vertical-left > .ant-menu-item,
+        .ant-menu-vertical-right > .ant-menu-item,
+        .ant-menu-inline > .ant-menu-item,
+        .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title,
+        .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title,
+        .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title,
+        .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+            height: 4rem;
+            @include flexBox(flex-start, center);
+        }
+        .ant-menu-item:hover,
+        .ant-menu-item-active,
+        .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+        .ant-menu-submenu-active,
+        .ant-menu-submenu-title:hover {
+            color: $primary-color;
+        }
+        .ant-menu-submenu:hover
+            > .ant-menu-submenu-title
+            > .ant-menu-submenu-expand-icon,
+        .ant-menu-submenu:hover
+            > .ant-menu-submenu-title
+            > .ant-menu-submenu-arrow {
+            color: $primary-color;
+        }
+        .ant-menu {
+            background-color: transparent;
+        }
+        .ant-menu-sub.ant-menu-inline {
+            background-color: transparent;
+        }
+        .ant-menu-vertical .ant-menu-item::after,
+        .ant-menu-vertical-left .ant-menu-item::after,
+        .ant-menu-vertical-right .ant-menu-item::after,
+        .ant-menu-inline .ant-menu-item::after {
+            border-right: 3px solid $primary-color;
+        }
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+        .ant-menu-item:active,
+        .ant-menu-submenu-title:active {
+            background-color: #ffdb663f;
+        }
+        .ant-menu-submenu-selected,
+        .ant-menu-item-selected {
+            color: $primary-color;
+        }
+        .ant-drawer-body {
+            background-color: rgb(0 0 0 / 82%);
+            padding-top: 4rem;
+            color: white;
+        }
+        .ant-drawer-close {
+            padding: 1.2rem;
+            padding-top: 1.5rem;
+            padding-right: 16px !important;
+            margin-right: 0 !important;
+        }
+        .ant-drawer-content-wrapper {
+            width: 80vw !important;
+        }
+        .ant-menu-inline,
+        .ant-menu-vertical,
+        .ant-menu-vertical-left {
+            border: none;
+        }
+        .ant-menu-submenu-expand-icon, .ant-menu-submenu-arrow, .ant-drawer-close{
+            color: white;
+        }
+        
+    }
+    &__logo-spa{
+        padding: 1rem 2rem;
+        margin-bottom: 3rem;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__infomation-account{
+        @include flexBox(flex-end, center);
+        height: 5rem;
+        background-color: #fff;
+        padding-right: 2rem;
+        box-shadow: 0px 1px 2px 0px rgba(193,193,193,1);
+        margin-bottom: 1rem;
+    }
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+    font-size: 1.4rem !important;
+}
+
+@media screen and (min-width: 769px) {
+    .navbar {
+        display: none;
+    }
+    .ant-menu {
+        color: white !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    .navbar__drawer--desktop {
+        display: none !important;
+    }
+}

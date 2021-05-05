@@ -33,16 +33,24 @@
         padding: 1rem 2rem;
         border-radius: 15px;
         input {
-            border: none;
-            outline: none;
+            border: none !important;
+            outline: none !important;
             box-shadow: none;
             font-size: 2rem;
-            width: 30rem;
+            width: 25rem;
         }
         .ant-input:focus,
         .ant-input-focused {
             border: none;
             box-shadow: none;
+        }
+        .ant-input-affix-wrapper{
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+        &-password{
+            width: 25rem !important;
         }
     }
     &-button-submit{
