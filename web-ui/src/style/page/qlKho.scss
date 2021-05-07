@@ -28,4 +28,29 @@
     .ql-nhan-vien__search{
         margin-left: 1rem;
     }
+    &__body{
+        margin-top: 2rem;
+    }
+    &__column1{
+        width: 10%;
+        @include centerFlexBox();
+    }
+    &__column2{
+        width: 20%;
+    }
+    &__column3{
+        width: 20%;
+    }
+    &__column4{
+        width: 20%;
+    }
+    &__column5{
+        width: 10%;
+    }
+    &__column6{
+        width: 10%;
+    }
+    &__column7{
+        width: 10%;
+    }
 }

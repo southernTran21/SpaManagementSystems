@@ -1,0 +1,25 @@
+.error {
+    position: absolute;
+    background-color: rgba(39,39,39);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    @include centerFlexBox();
+    color: white;
+    font-weight: bold;
+    font-size: 2.3rem;
+    flex-direction: column;
+    &__logo {
+        width: 50rem;
+        margin-bottom: 2rem;
+    }
+    &__button-back{
+        background-color: $primary-color;
+        font-size: 2rem;
+        padding: 1rem 4rem;
+        margin-top: 2rem;
+        border-radius: 15px;
+        margin-left: 5.2rem;
+    }
+}

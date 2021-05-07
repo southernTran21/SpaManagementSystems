@@ -59,23 +59,32 @@
             @include centerFlexBox();
         }
         &__column2 {
-            width: 20%;
+            width: 15%;
         }
         &__column3 {
             width: 15%;
         }
         &__column4 {
-            width: 28%;
+            width: 25%;
         }
         &__column5 {
-            width: 10%;
+            width: 12.5%;
         }
         &__column6 {
-            width: 7%;
+            width: 12.5%;
         }
         &__column7 {
             width: 15%;
             @include centerFlexBox();
+        }
+        &__column1,
+        &__column2,
+        &__column3,
+        &__column4,
+        &__column5,
+        &__column6,
+        &__column7 {
+            padding: 0 1%;
         }
     }
 }

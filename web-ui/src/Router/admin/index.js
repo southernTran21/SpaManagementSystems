@@ -7,6 +7,7 @@ import { Dropdown, Menu, message, Space } from "antd";
 import React, { Component, Fragment } from "react";
 import { Link, Route } from "react-router-dom";
 import LogoSpa from "../../image/svg-logo.png";
+import Error from "../../layout/error";
 import QuanLyKho from "../../layout/kho";
 import Navbar from "../../layout/navbar";
 import QuanLyMyPham from "../../layout/quanLyMyPham";
@@ -62,6 +63,12 @@ export default class AdminRouter extends Component {
                         />
                     </Fragment>
                 );
+                break;
+            case(""):
+                return(
+                    <Error/>
+                )
+                break;
         }
     };
 
@@ -93,10 +100,11 @@ export default class AdminRouter extends Component {
                         >
                             <Menu.Item key="1" ><Link to="/admin/quan-ly-nhan-vien">Quản Lý Nhân Viên</Link></Menu.Item>
                             <Menu.Item key="9"><Link to="/admin/quan-ly-tai-khoan">Quản Lý Tài Khoản</Link></Menu.Item>
-                            <Menu.Item key="8">Quản Lý Khách Hàng</Menu.Item>
+                            <Menu.Item key="8"><Link to="/admin/quan-ly-khach-hang">Quản Lý Khách Hàng</Link></Menu.Item>
                             <SubMenu key="sub2" title="Quản Lý Mỹ Phẩm">
                                 <Menu.Item key="2"><Link to="/admin/quan-ly-my-pham">Danh Mục Mỹ Phẩm</Link></Menu.Item>
                                 <Menu.Item key="4"><Link to="/admin/quan-ly-kho-my-pham">Kho Mỹ Phẩm</Link></Menu.Item>
+                                <Menu.Item key="10"><Link to="/admin/quan-ly-nhap-kho">Nhập Kho</Link></Menu.Item>
                             </SubMenu>
                             <SubMenu key="sub3" title="Quản Lý Dịch Vụ">
                                 <Menu.Item key="5">Danh Mục Dịch Vụ</Menu.Item>

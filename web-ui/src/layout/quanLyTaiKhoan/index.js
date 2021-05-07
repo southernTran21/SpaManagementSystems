@@ -1,13 +1,5 @@
-import {
-    Input,
-    Modal,
-    Button,
-    DatePicker,
-    Select,
-    message,
-    Popconfirm,
-} from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { Input, Popconfirm, Select } from "antd";
 import axios from "axios";
 import React, { Component, Fragment } from "react";
 import { URL_API } from "../../constant";
@@ -44,9 +36,7 @@ export default class QuanLyTaiKhoan extends Component {
             });
     }
 
-    handleShowQuyen = (id) => {
-        
-    }
+    handleShowQuyen = (id) => {};
 
     render() {
         const { account } = this.state;
@@ -116,7 +106,7 @@ export default class QuanLyTaiKhoan extends Component {
                                             {result.idQuyen}
                                         </div>
                                         <div className="ql-nhan-vien__column6">
-                                            {result.TinhTrang == true
+                                            {result.status == true
                                                 ? "Đang hoạt động"
                                                 : "Ngừng hoạt động"}
                                         </div>
