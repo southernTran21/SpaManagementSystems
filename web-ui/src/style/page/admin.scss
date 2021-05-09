@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+    .admin{
+        &__right{
+            width: 100% !important;
+        }
+        .ant-modal{
+            top: 3rem;
+        }
+    }
+    
+}

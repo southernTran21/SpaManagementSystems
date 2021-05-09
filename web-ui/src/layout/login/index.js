@@ -69,10 +69,9 @@ export default class Login extends Component {
                     );
                     if (response.data[0].idQuyen == "1") {
                         history.push("/admin/quan-ly-nhan-vien");
-                    } else {
-                        // history.push("/muon-csvc");
+                    } else if (response.data[0].idQuyen == "1003") {
+                        history.push("/staff");
                     }
-
                     window.location.reload();
                 }
             });

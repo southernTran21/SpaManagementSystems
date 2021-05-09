@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./style/main.scss";
 import "antd/dist/antd.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./layout/login";
 import AdminRouter from "./Router/admin";
+import StaffRouter from "./Router/staff";
+import "./style/main.scss";
 
 function App() {
     return (
@@ -14,10 +15,10 @@ function App() {
                     path="/admin"
                     component={({ match }) => <AdminRouter match={match} />}
                 />
-                {/* <Route
-                    path="/muon-csvc"
-                    component={({ match }) => <NhanVien match={match} />}
-                /> */}
+                <Route
+                    path="/staff"
+                    component={({ match }) => <StaffRouter match={match} />}
+                />
             </Switch>
         </Router>
     );

@@ -1,8 +1,6 @@
 // eslint-disable-next-line
 //import antd
-import {
-    UserOutlined
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, message, Space } from "antd";
 import React, { Component, Fragment } from "react";
 import { Link, Route } from "react-router-dom";
@@ -13,12 +11,18 @@ import Navbar from "../../layout/navbar";
 import QuanLyMyPham from "../../layout/quanLyMyPham";
 import QuanLyNhanVien from "../../layout/quanLyNhanVien";
 import QuanLyTaiKhoan from "../../layout/quanLyTaiKhoan";
+import history from "../../history";
 
 const { SubMenu } = Menu;
 
 function handleMenuClick(e) {
-    message.info("Click on menu item.");
-    console.log("click", e);
+    if (e.key == 1) {
+        localStorage.removeItem("displayName");
+        localStorage.removeItem("accountType");
+        localStorage.removeItem("idAccount");
+        history.push("/");
+        window.location.reload();
+    }
 }
 
 const menu = (
@@ -38,7 +42,7 @@ export default class AdminRouter extends Component {
 
     handleInputURL = (accountType, match) => {
         switch (accountType) {
-            case ("1"): // quyền admin
+            case "1": // quyền admin
                 return (
                     <Fragment>
                         <Route
@@ -64,10 +68,8 @@ export default class AdminRouter extends Component {
                     </Fragment>
                 );
                 break;
-            case(""):
-                return(
-                    <Error/>
-                )
+            case ("", null):
+                return <Error />;
                 break;
         }
     };
@@ -83,7 +85,6 @@ export default class AdminRouter extends Component {
                         width: "100%",
                         display: "flex",
                     }}
-                    
                 >
                     <div
                         style={{ width: "17%", background: "rgb(0 0 0 / 82%)" }}
@@ -98,13 +99,37 @@ export default class AdminRouter extends Component {
                             defaultSelectedKeys={["1"]}
                             mode="inline"
                         >
-                            <Menu.Item key="1" ><Link to="/admin/quan-ly-nhan-vien">Quản Lý Nhân Viên</Link></Menu.Item>
-                            <Menu.Item key="9"><Link to="/admin/quan-ly-tai-khoan">Quản Lý Tài Khoản</Link></Menu.Item>
-                            <Menu.Item key="8"><Link to="/admin/quan-ly-khach-hang">Quản Lý Khách Hàng</Link></Menu.Item>
+                            <Menu.Item key="1">
+                                <Link to="/admin/quan-ly-nhan-vien">
+                                    Quản Lý Nhân Viên
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="9">
+                                <Link to="/admin/quan-ly-tai-khoan">
+                                    Quản Lý Tài Khoản
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key="8">
+                                <Link to="/admin/quan-ly-khach-hang">
+                                    Quản Lý Khách Hàng
+                                </Link>
+                            </Menu.Item>
                             <SubMenu key="sub2" title="Quản Lý Mỹ Phẩm">
-                                <Menu.Item key="2"><Link to="/admin/quan-ly-my-pham">Danh Mục Mỹ Phẩm</Link></Menu.Item>
-                                <Menu.Item key="4"><Link to="/admin/quan-ly-kho-my-pham">Kho Mỹ Phẩm</Link></Menu.Item>
-                                <Menu.Item key="10"><Link to="/admin/quan-ly-nhap-kho">Nhập Kho</Link></Menu.Item>
+                                <Menu.Item key="2">
+                                    <Link to="/admin/quan-ly-my-pham">
+                                        Danh Mục Mỹ Phẩm
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Item key="4">
+                                    <Link to="/admin/quan-ly-kho-my-pham">
+                                        Kho Mỹ Phẩm
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Item key="10">
+                                    <Link to="/admin/quan-ly-nhap-kho">
+                                        Nhập Kho
+                                    </Link>
+                                </Menu.Item>
                             </SubMenu>
                             <SubMenu key="sub3" title="Quản Lý Dịch Vụ">
                                 <Menu.Item key="5">Danh Mục Dịch Vụ</Menu.Item>
@@ -117,8 +142,8 @@ export default class AdminRouter extends Component {
                         style={{
                             width: "83%",
                             backgroundColor: "#fff",
-                            height: "100vh",
                         }}
+                        className="admin__right"
                     >
                         <div className="navbar__infomation-account">
                             <Space wrap>
@@ -128,7 +153,8 @@ export default class AdminRouter extends Component {
                                     placement="bottomCenter"
                                     icon={<UserOutlined />}
                                 >
-                                    Xin Chào {localStorage.getItem("displayName")}
+                                    Xin Chào{" "}
+                                    {localStorage.getItem("displayName")}
                                 </Dropdown.Button>
                             </Space>
                         </div>

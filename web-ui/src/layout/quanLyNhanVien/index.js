@@ -91,7 +91,7 @@ export default class QuanLyNhanVien extends Component {
             "" +
             today.getSeconds();
 
-        console.log(__idAccount);
+            
         if (__MatKhau == __NhapLai) {
             axios({
                 method: "post",
