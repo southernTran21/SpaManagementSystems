@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import LogoSpa from "../../image/svg-logo.png";
+import Barcode from "react-barcode";
+import LogoSpa from "../../image/LogoFull.svg";
 import BgCard from "../../image/BgCard.jpg";
 
 export default class DangKyThanhCong extends Component {
@@ -20,22 +21,38 @@ export default class DangKyThanhCong extends Component {
         return (
             <div className="dk-success">
                 <div className="dk-success__card">
-                    <div className="dk-success__before" style={{backgroundImage: `url(${BgCard})`}}>
+                    <div
+                        className="dk-success__before"
+                        style={{ backgroundImage: `url(${BgCard})` }}
+                    >
                         <div className="dk-success__">
                             <div className="dk-success__logo">
                                 <img src={LogoSpa} alt="" />
                             </div>
-                            <div className="dk-success__info">
-                                <span className="dk-success__name">
-                                    {cusName}
-                                </span>
-                                <div className="dk-success__date">
-                                    {this.handleShowDate(ngayTao)}
-                                </div>
+                        </div>
+                    </div>
+                    <div
+                        className="dk-success__after"
+                        style={{ backgroundImage: `url(${BgCard})` }}
+                    >
+                        <div className="dk-success__barcode">
+                                <Barcode value={cusId}/>
+                            </div>
+                        <div className="dk-success__info">
+                            
+                            <span className="dk-success__name">{cusName}</span>
+                            <div className="dk-success__date">
+                                {this.handleShowDate(ngayTao)}
                             </div>
                         </div>
                     </div>
-                    <div className="dk-success__after" style={{backgroundImage: `url(${BgCard})`}}></div>
+                </div>
+                <div className="dk-success__feature">
+                    <span className="dk-success__text">Đã Đăng Ký Thành Công</span>
+                    <div className="dk-success__button--wrapper">
+                        <div className="dk-success__button dk-success__button--home">Trở Về <br/> Trang Chủ</div>
+                        <div className="dk-success__button dk-success__button--next">Đặt Lịch</div>
+                    </div>
                 </div>
             </div>
         );

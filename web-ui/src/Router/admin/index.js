@@ -4,7 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, message, Space } from "antd";
 import React, { Component, Fragment } from "react";
 import { Link, Route } from "react-router-dom";
-import LogoSpa from "../../image/svg-logo.png";
+import LogoSpa from "../../image/LogoTitle.svg";
 import Error from "../../layout/error";
 import QuanLyKho from "../../layout/kho";
 import Navbar from "../../layout/navbar";
@@ -12,6 +12,7 @@ import QuanLyMyPham from "../../layout/quanLyMyPham";
 import QuanLyNhanVien from "../../layout/quanLyNhanVien";
 import QuanLyTaiKhoan from "../../layout/quanLyTaiKhoan";
 import history from "../../history";
+import QuanLyKhachHang from "../../layout/quanLyKhachHang";
 
 const { SubMenu } = Menu;
 
@@ -65,6 +66,11 @@ export default class AdminRouter extends Component {
                             exact
                             component={QuanLyKho}
                         />
+                        <Route
+                            path={`${match}/quan-ly-khach-hang`}
+                            exact
+                            component={QuanLyKhachHang}
+                        />
                     </Fragment>
                 );
                 break;
@@ -84,6 +90,7 @@ export default class AdminRouter extends Component {
                     style={{
                         width: "100%",
                         display: "flex",
+                        height: "100vh"
                     }}
                 >
                     <div

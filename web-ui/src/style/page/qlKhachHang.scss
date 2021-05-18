@@ -1,0 +1,9 @@
+.ql-khach-hang{
+    padding: 1rem;
+    &__search-box{
+        @include flexBox(flex-end, center);
+    }
+    &__table-data{
+        margin-top: 1.5rem;
+    }
+}

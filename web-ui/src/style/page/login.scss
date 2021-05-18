@@ -37,7 +37,7 @@
             outline: none !important;
             box-shadow: none;
             font-size: 2rem;
-            width: 25rem;
+            width: 50rem;
         }
         .ant-input:focus,
         .ant-input-focused {
@@ -50,7 +50,7 @@
             box-shadow: none;
         }
         &-password{
-            width: 25rem !important;
+            width: 50rem !important;
         }
     }
     &-button-submit{
@@ -62,5 +62,17 @@
         border-radius: 15px;
         cursor: pointer;
         color: white;
+    }
+}
+@media screen and (max-width: 768px) {
+    .login{
+        &-input{
+            input{
+                width: 20rem;
+            }
+            &-password{
+                width: 20rem !important;
+            }
+        }
     }
 }

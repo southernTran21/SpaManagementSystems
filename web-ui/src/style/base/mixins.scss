@@ -28,4 +28,15 @@ $color-hoover: #ffdb663f;
     justify-content: center;
     align-items: center;
 }
+@mixin centerFlexBoxColumn() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin flexBoxSpaceBetween() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 // END

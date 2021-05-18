@@ -1,6 +1,16 @@
-import { Input, Modal, Button, DatePicker, Select, message, Popconfirm } from "antd";
 import {
-    DeleteOutlined
+    Input,
+    Modal,
+    Button,
+    DatePicker,
+    Select,
+    message,
+    Popconfirm,
+} from "antd";
+import {
+    DeleteOutlined,
+    LockOutlined,
+    UnlockOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
 import React, { Component, Fragment } from "react";
@@ -8,7 +18,6 @@ import { URL_API } from "../../constant";
 const { Search } = Input;
 const { Option } = Select;
 
-const onSearch = (value) => console.log(value);
 const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
 
 export default class QuanLyNhanVien extends Component {
@@ -91,42 +100,55 @@ export default class QuanLyNhanVien extends Component {
             "" +
             today.getSeconds();
 
-            
-        if (__MatKhau == __NhapLai) {
-            axios({
-                method: "post",
-                url: URL_API + "/account",
-                data: {
-                    id: __idAccount,
-                    username: __TenDangNhap,
-                    password: __MatKhau,
-                    accountName: "",
-                    idQuyen: 1003,
-                },
-            }).then((response) => {
+        if (
+            __ChucVu != "" ||
+            __HoTen != "" ||
+            __MatKhau != "" ||
+            __NgayBatDau != "" ||
+            __NhapLai != "" ||
+            __SDT != "" ||
+            __TenDangNhap != ""
+        ) {
+            if (__MatKhau == __NhapLai) {
                 axios({
                     method: "post",
-                    url: URL_API + "/nhanvien",
+                    url: URL_API + "/account",
                     data: {
-                        idAccount: __idAccount,
-                        Ten: __HoTen,
-                        idChucVu: __ChucVu,
-                        DienThoai: __SDT,
-                        NgayBatDau: __NgayBatDau,
-                        TinhTrang: 1,
+                        id: __idAccount,
+                        username: __TenDangNhap,
+                        password: __MatKhau,
+                        accountName: "",
+                        idQuyen: 1003,
                     },
                 }).then((response) => {
-                    message.success("Thêm thành công");
-                    this.setState({ confirmLoading: true });
-                    setTimeout(() => {
-                        this.setState({
-                            visible: false,
-                            confirmLoading: false,
-                        });
-                        window.location.reload();
-                    }, 2000);
+                    axios({
+                        method: "post",
+                        url: URL_API + "/nhanvien",
+                        data: {
+                            idAccount: __idAccount,
+                            Ten: __HoTen,
+                            idChucVu: __ChucVu,
+                            DienThoai: __SDT,
+                            NgayBatDau: __NgayBatDau,
+                            TinhTrang: 1,
+                        },
+                    }).then((response) => {
+                        message.success("Thêm thành công");
+                        this.setState({ confirmLoading: true });
+                        setTimeout(() => {
+                            this.setState({
+                                visible: false,
+                                confirmLoading: false,
+                            });
+                            window.location.reload();
+                        }, 2000);
+                    });
                 });
-            });
+            } else {
+                message.error("Mật Khẩu Không Trùng Khớp");
+            }
+        } else {
+            message.error("Bạn Cần Nhập Đủ Thông Tin");
         }
     };
     handleCancel = () => {
@@ -168,6 +190,39 @@ export default class QuanLyNhanVien extends Component {
         });
     };
 
+    onSearch = (value) => {};
+
+    handleChangeStatus = (status, id) => {
+        console.log(id)
+        if (status != null || status != "") {
+            if (status == 0) {
+                axios({
+                    method: "post",
+                    url: URL_API + "/nhanvien/change-status",
+                    data: {
+                        id: id,
+                        TinhTrang: 1,
+                    },
+                }).then((response) => {
+                    message.success("Sửa thành công");
+                    window.location.reload();
+                });
+            } else {
+                axios({
+                    method: "post",
+                    url: URL_API + "/nhanvien/change-status",
+                    data: {
+                        id: id,
+                        TinhTrang: 0,
+                    },
+                }).then((response) => {
+                    message.success("Sửa thành công");
+                    window.location.reload();
+                });
+            }
+        }
+    };
+
     render() {
         const { nhanVien, confirmLoading, visible, chucVu } = this.state;
         return (
@@ -181,7 +236,7 @@ export default class QuanLyNhanVien extends Component {
                                 allowClear
                                 enterButton="Tìm Kiếm"
                                 size="middle"
-                                onSearch={onSearch}
+                                onSearch={this.onSearch()}
                             />
                         </div>
                         <div
@@ -239,6 +294,41 @@ export default class QuanLyNhanVien extends Component {
                                                 : "Đã Nghỉ"}
                                         </div>
                                         <div className="ql-nhan-vien__column7">
+                                            {result.TinhTrang == 1 ? (
+                                                <Popconfirm
+                                                    placement="top"
+                                                    title="Bạn có chắc muốn khóa"
+                                                    onConfirm={() => {
+                                                        this.handleChangeStatus(
+                                                            result.TinhTrang,
+                                                            result.id
+                                                        );
+                                                    }}
+                                                    okText="Yes"
+                                                    cancelText="No"
+                                                >
+                                                    <div className="ql-nhan-vien__icon">
+                                                        <LockOutlined />
+                                                    </div>
+                                                </Popconfirm>
+                                            ) : (
+                                                <Popconfirm
+                                                    placement="top"
+                                                    title="Bạn có chắc muốn mở khóa"
+                                                    onConfirm={() => {
+                                                        this.handleChangeStatus(
+                                                            result.TinhTrang,
+                                                            result.id
+                                                        );
+                                                    }}
+                                                    okText="Yes"
+                                                    cancelText="No"
+                                                >
+                                                    <div className="ql-nhan-vien__icon">
+                                                        <UnlockOutlined />
+                                                    </div>
+                                                </Popconfirm>
+                                            )}
                                             <Popconfirm
                                                 placement="top"
                                                 title="Bạn có chắc muốn xóa"
@@ -250,7 +340,7 @@ export default class QuanLyNhanVien extends Component {
                                                 okText="Yes"
                                                 cancelText="No"
                                             >
-                                                <div className="iconDelete">
+                                                <div className="ql-nhan-vien__icon">
                                                     <DeleteOutlined />
                                                 </div>
                                             </Popconfirm>

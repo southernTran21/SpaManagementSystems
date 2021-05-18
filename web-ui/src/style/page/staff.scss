@@ -1,7 +1,7 @@
 .staff{
     &__header{
         background-color: rgb(39, 39, 39);
-        padding: 1rem 2rem;
+        height: 5rem;
         @include centerFlexBox();
     }
     &__logo{
@@ -20,6 +20,7 @@
             margin: 0 1rem;
             text-align: center;
             cursor: pointer;
+            line-height: 200%;
             span{
                 font-size: 2rem;
             }

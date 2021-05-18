@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
-import LogoSpa from "../../image/svg-logo.png";
+import LogoSpa from "../../image/LogoTitle.svg";
 import { Link, Route } from "react-router-dom";
 import DangKyThanhVien from "../../layout/dangKyThanhVien";
 import DangKyThanhCong from "../../layout/dangKyThanhCong";
+import KhachHang from "../../layout/khachHang";
+import DatLich from "../../layout/datLich";
 
 export default class StaffRouter extends Component {
     handleInputURL = (accountType, match) => {
@@ -20,7 +22,19 @@ export default class StaffRouter extends Component {
                             exact
                             component={DangKyThanhCong}
                         />
+                        <Route
+                            path={`${match}/khach-hang`}
+                            exact
+                            component={KhachHang}
+                        />
+                        <Route
+                            path={`${match}/dat-lich`}
+                            exact
+                            component={DatLich}
+                        />
 
+
+                        {/* route trang home cho phần Staff */}
                         <Route
                             path={`${match}`}
                             exact

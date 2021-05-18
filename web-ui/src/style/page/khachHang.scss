@@ -1,0 +1,95 @@
+.khach-hang {
+    padding: 1rem 2rem;
+    &__head{
+        @include flexBox(space-between, center);
+    }
+    &__check-info {
+        width: 20%;
+        height: 18rem;
+        border: 2px solid $primary-color;
+        padding: 2rem;
+        border-radius: 15px;
+        &__title {
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+        input {
+            font-size: 1.6rem;
+            margin-top: 1rem;
+        }
+        &__check-box {
+            margin-top: 1rem;
+        }
+        &__button {
+            @include flexBox(flex-end, center);
+            margin-top: 1rem;
+            width: 100%;
+            span {
+                background-color: $primary-color;
+                font-weight: bold;
+                font-size: 1.6rem;
+                padding: .7rem 2rem;
+                cursor: pointer;
+                color: white;
+                border-radius: 7px;
+            }
+        }
+    }
+    &__infomation{
+        border: 2px solid $primary-color;
+        width: calc(80% - 2rem);
+        height: 18rem;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+    &__show-info{
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        display: flex;
+        :nth-child(1){
+            font-weight: bold;
+            width: 13rem;
+        }
+    }
+    &__lich-hen{
+        margin-top: 2rem;
+        &__title{
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+        &__button{
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            background-color: $primary-color;
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    }
+    &__data-lich-hen{
+        margin-top: 1rem;
+        &__column1{
+            width: 5%;
+            @include centerFlexBox();
+        }
+        &__column2{
+            width: 15%;
+        }
+        &__column3{
+            width: 15%;
+        }
+        &__column4{
+            width: 15%;
+        }
+        &__column5{
+            width: 35%;
+        }
+        &__column6{
+            width: 15%;
+            @include centerFlexBox();
+        }
+    }
+}

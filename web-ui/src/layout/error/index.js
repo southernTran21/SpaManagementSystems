@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LogoSpa from "../../image/svg-logo.png";
+import LogoSpa from "../../image/LogoFull.svg";
 
 export default class Error extends Component {
     render() {

@@ -9,7 +9,7 @@ import {
 //import antd
 import { Drawer, Dropdown, Menu, message, Space } from "antd";
 import React, { Component, Fragment } from "react";
-import LogoSpa from "../../image/svg-logo.png";
+import LogoSpa from "../../image/LogoTitle.svg";
 
 function handleMenuClick(e) {
     message.info("Click on menu item.");

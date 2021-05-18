@@ -44,6 +44,7 @@ namespace WebAPI.Controllers
             }
             return new JsonResult(table);
         }//done
+        [HttpPost]
         public JsonResult Post(NhanVien a)
         {
             string query = @"INSERT INTO [dbo].[NhanVien] ([idAccount],[Ten],[idChucVu],[DienThoai],[NgayBatDau],[TinhTrang])VALUES( 
@@ -69,7 +70,49 @@ namespace WebAPI.Controllers
                 }
             }
             return new JsonResult("Added Successfully");
-        }
+        }//done
 
+        [HttpPost]
+        [Route("change-status")]
+        public JsonResult ChangeStatus(NhanVien a)
+        {
+            string query = @"UPDATE [dbo].[NhanVien] SET [TinhTrang] =  '" + a.TinhTrang + @"' where id = '" + a.id + @"'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+            SqlDataReader myreader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myreader = myCommand.ExecuteReader();
+                    table.Load(myreader);
+                    myreader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Update Successfully");
+        }//done
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            string query = @"delete FROM [dbo].[NhanVien] where id = " + id + @"";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+            SqlDataReader myreader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myreader = myCommand.ExecuteReader();
+                    table.Load(myreader);
+                    myreader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Delete Successfully");
+        }//done
     }
 }
