@@ -1,0 +1,80 @@
+.dat-lich {
+    padding: 2rem;
+    &__info {
+        padding: 2rem;
+        border: 2px solid $primary-color;
+        border-radius: 15px;
+        width: 25%;
+        &__title {
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+        &__item {
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+            display: flex;
+            :nth-child(1) {
+                font-weight: bold;
+                width: 40%;
+            }
+            :nth-child(2) {
+                width: 60%;
+            }
+        }
+    }
+    &__head {
+        @include flexBox(space-between, stretch);
+    }
+    &__book {
+        padding: 2rem;
+        border: 2px solid $primary-color;
+        border-radius: 15px;
+        width: calc(75% - 2rem);
+        &__selection {
+            @include flexBox();
+            margin-top: 1.5rem;
+            &__item {
+                @include flexBox(flex-start, flex-start, column);
+                // margin-left: 2rem;
+                width: 25%;
+                span:nth-child(1) {
+                    font-size: 1.6rem;
+                }
+                &__select{
+                    margin-top: 1rem;
+                }
+            }
+        }
+        &__button {
+            // margin-top: 2rem;
+            background-color: $primary-color;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 7px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+        &__conment {
+            @include flexBox(flex-start, flex-start, column);
+            width: 75%;
+            span:nth-child(1) {
+                font-size: 1.6rem;
+            }
+            input {
+                margin-top: 1rem;
+            }
+        }
+        &__end {
+            @include flexBox(space-between, flex-end);
+            margin-top: 1rem;
+        }
+    }
+    &__manage {
+        margin-top: 2rem;
+        &__title {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+    }
+}

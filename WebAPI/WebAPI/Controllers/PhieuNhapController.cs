@@ -11,13 +11,13 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
-    {
+	[Route("api/[controller]")]
+	[ApiController]
+	public class PhieuNhapController : ControllerBase
+	{
         private readonly IConfiguration _configuration;
 
-        public AccountController(IConfiguration configuration)
+        public PhieuNhapController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select * from Account as a, Quyen as b where a.idQuyen = b.id";
+            string query = @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
             SqlDataReader myreader;
@@ -43,12 +43,10 @@ namespace WebAPI.Controllers
             return new JsonResult(table);
         }//done
 
-        [Route("verificationAccount")]
-        [HttpPost]
-        public JsonResult verificationAccount(Account account)
+        [HttpGet("{id}")]
+        public JsonResult GetForID(string id)
         {
-            string query = @"SELECT * FROM [dbo].[Account] where username = '"
-                            + account.username + @"' and  password = '" + account.password + @"'";
+            string query = @" '" + id + "'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
             SqlDataReader myreader;
@@ -67,15 +65,18 @@ namespace WebAPI.Controllers
         }//done
 
         [HttpPost]
-        public JsonResult Post(Account account)
+        public JsonResult Post(PhieuNhap value)
         {
-            string query = @"insert into [dbo].[Account] ([username],[password],[accountName],[idQuyen],status, id) values( 
-                            '" + account.username + @"'
-                            ,'" + account.password + @"'
-                            ,'" + account.accountName + @"'
-                            ,'" + account.idQuyen + @"'
-                            ,'1'
-                            ,'" + account.id + @"'
+            string query = @"INSERT INTO [dbo].[PhieuNhap]
+                           ([idMyPham]
+                           ,[SoLuongNhap]
+                           ,[NgayNhap]
+                           ,[id])
+                            VALUES( 
+                            '" + value.idMyPham + @"'
+                            ,'" + value.SoLuong + @"'
+                            ,'" + value.NgayNhap + @"'
+                            ,'" + value.id + @"'
                             )";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
@@ -93,6 +94,5 @@ namespace WebAPI.Controllers
             }
             return new JsonResult("Added Successfully");
         }//done
-
     }
 }

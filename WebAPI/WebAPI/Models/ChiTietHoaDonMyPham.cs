@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Models
 {
-	public class Kho
+	public class ChiTietHoaDonMyPham
 	{
-		public string id { get; set; }
+		public string idHoaDon { get; set; }
 		public int idMyPham { get; set; }
 		public int SoLuong { get; set; }
 	}

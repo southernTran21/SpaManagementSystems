@@ -1,6 +1,6 @@
 .khach-hang {
     padding: 1rem 2rem;
-    &__head{
+    &__head {
         @include flexBox(space-between, center);
     }
     &__check-info {
@@ -28,68 +28,93 @@
                 background-color: $primary-color;
                 font-weight: bold;
                 font-size: 1.6rem;
-                padding: .7rem 2rem;
+                padding: 0.7rem 2rem;
                 cursor: pointer;
                 color: white;
                 border-radius: 7px;
             }
         }
     }
-    &__infomation{
+    &__infomation {
         border: 2px solid $primary-color;
         width: calc(80% - 2rem);
         height: 18rem;
         border-radius: 15px;
         padding: 2rem;
     }
-    &__show-info{
+    &__show-info {
         font-size: 1.5rem;
         margin-top: 1rem;
         display: flex;
-        :nth-child(1){
+        :nth-child(1) {
             font-weight: bold;
             width: 13rem;
         }
     }
-    &__lich-hen{
+    &__lich-hen {
         margin-top: 2rem;
-        &__title{
+        &__title {
             font-weight: bold;
             font-size: 1.6rem;
         }
-        &__button{
+        &__button {
             margin-top: 2rem;
             font-size: 1.6rem;
             font-weight: bold;
             background-color: $primary-color;
             display: inline-block;
             padding: 1rem 2rem;
-            color: white;
+            color: white !important;
             border-radius: 7px;
             cursor: pointer;
         }
     }
-    &__data-lich-hen{
+    &__data-lich-hen {
         margin-top: 1rem;
-        &__column1{
+        &__column1 {
             width: 5%;
             @include centerFlexBox();
         }
-        &__column2{
+        &__column2 {
             width: 15%;
         }
-        &__column3{
+        &__column3 {
             width: 15%;
         }
-        &__column4{
+        &__column4 {
             width: 15%;
         }
-        &__column5{
-            width: 35%;
+        &__column5 {
+            width: 10%;
         }
-        &__column6{
-            width: 15%;
-            @include centerFlexBox();
+        &__column6 {
+            width: 10%;
+        }
+        &__column7 {
+            width: 25%;
+        }
+        &__column1,
+        &__column2,
+        &__column3,
+        &__column4,
+        &__column5,
+        &__column6,
+        &__column7 {
+            padding: 0 1%;
+        }
+    }
+    &__button-checkin{
+        border: 1px solid rgb(0, 202, 0);
+        display: inline-block;
+        padding: .5rem 1rem;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.4rem;
+        font-weight: bold;
+        transition: 0.25s all ease-in-out;
+        &:hover{
+            background-color: rgb(0, 202, 0);
+            color: white;
         }
     }
 }

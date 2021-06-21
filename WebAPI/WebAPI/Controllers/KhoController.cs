@@ -13,11 +13,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NhanVienController : ControllerBase
+    public class KhoController : ControllerBase
     {
         private readonly IConfiguration _configuration;
 
-        public NhanVienController(IConfiguration configuration)
+        public KhoController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -25,9 +25,9 @@ namespace WebAPI.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select a.id, a.Ten,b.TenChucVu, a.DienThoai, a.NgayBatDau, a.TinhTrang 
-                                from NhanVien a, ChucVu b 
-                                    where a.idChucVu = b.id";
+            string query = @"select a.*, b.Ten, c.TenLoai, d.SLN as SLN 
+                            from Kho as a, MyPham as b, LoaiMyPham as c, (select idMyPham, sum(SoLuongNhap) as SLN from PhieuNhap group by idMyPham) as d 
+                            where a.idMyPham = b.id and b.idLoai = c.id and a.idMyPham = d.idMyPham";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
             SqlDataReader myreader;
@@ -44,11 +44,11 @@ namespace WebAPI.Controllers
             }
             return new JsonResult(table);
         }//done
-        [HttpGet]
-        [Route("getNhanVienChamSoc")]
-        public JsonResult GetNhanVienChamSoc()
+
+        [HttpGet("{id}")]
+        public JsonResult GetForID(string id)
         {
-            string query = @"select * from NhanVien where idChucVu = '2' and TinhTrang = '1'";
+            string query = @"select a.*, b.Ten, c.TenLoai from Kho as a, MyPham as b, LoaiMyPham as c where a.idMyPham = b.id and b.idLoai = c.id and a.idMyPham = '"+id+"'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
             SqlDataReader myreader;
@@ -65,16 +65,54 @@ namespace WebAPI.Controllers
             }
             return new JsonResult(table);
         }//done
+        [HttpGet("laysoluong")]
+        public JsonResult LaySoLuong()
+        {
+            string query = @"select SoLuong, idMyPham from Kho";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+            SqlDataReader myreader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myreader = myCommand.ExecuteReader();
+                    table.Load(myreader);
+                    myreader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }//done
+        [HttpGet("tongsoluongnhap")]
+        public JsonResult TongSoLuongNhap()
+        {
+            string query = @"select Sum(SoLuongNhap) as TongSoLuongNhap from PhieuNhap";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+            SqlDataReader myreader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myreader = myCommand.ExecuteReader();
+                    table.Load(myreader);
+                    myreader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }//done
+
         [HttpPost]
-        public JsonResult Post(NhanVien a)
+        public JsonResult Post(Kho value)
         {
-            string query = @"INSERT INTO [dbo].[NhanVien] ([idAccount],[Ten],[idChucVu],[DienThoai],[NgayBatDau],[TinhTrang])VALUES( 
-                            '" + a.idAccount + @"'
-                            ,'" + a.Ten + @"'
-                            ,'" + a.idChucVu + @"'
-                            ,'" + a.DienThoai + @"'
-                            ,'" + a.NgayBatDau + @"'
-                            ,'" + a.TinhTrang + @"'
+            string query = @"INSERT INTO [dbo].[Kho]([id],[idMyPham],[SoLuong]) VALUES( 
+                            '" + value.id + @"'
+                            ,'" + value.idMyPham + @"'
+                            ,'" + value.SoLuong + @"'
                             )";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
@@ -92,12 +130,10 @@ namespace WebAPI.Controllers
             }
             return new JsonResult("Added Successfully");
         }//done
-
-        [HttpPost]
-        [Route("change-status")]
-        public JsonResult ChangeStatus(NhanVien a)
+        [HttpPut]
+        public JsonResult Put(Kho value)
         {
-            string query = @"UPDATE [dbo].[NhanVien] SET [TinhTrang] =  '" + a.TinhTrang + @"' where id = '" + a.id + @"'";
+            string query = @"UPDATE [dbo].[Kho] SET [SoLuong] = '" + value.SoLuong + @"' where idMyPham = '" + value.idMyPham + @"'";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DBConnection");
             SqlDataReader myreader;
@@ -112,28 +148,7 @@ namespace WebAPI.Controllers
                     myCon.Close();
                 }
             }
-            return new JsonResult("Update Successfully");
-        }//done
-
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
-        {
-            string query = @"delete FROM [dbo].[NhanVien] where id = " + id + @"";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DBConnection");
-            SqlDataReader myreader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myreader = myCommand.ExecuteReader();
-                    table.Load(myreader);
-                    myreader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Delete Successfully");
+            return new JsonResult("Updated Successfully");
         }//done
     }
 }

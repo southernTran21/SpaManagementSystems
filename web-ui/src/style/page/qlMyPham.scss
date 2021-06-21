@@ -39,16 +39,13 @@
             width: 25%;
         }
         &__item {
-            @include flexBox();
+            @include flexBox( flex-start, center);
             padding: 1rem 0;
             border-bottom: 1px solid #e6e6e6;
             transition: 0.25s all ease-in-out;
             font-size: 1.4rem;
             &:nth-last-child(1) {
                 border-bottom: none;
-            }
-            &:hover {
-                background-color: $color-hoover;
             }
         }
     }

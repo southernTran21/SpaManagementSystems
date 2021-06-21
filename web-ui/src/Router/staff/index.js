@@ -5,6 +5,8 @@ import DangKyThanhVien from "../../layout/dangKyThanhVien";
 import DangKyThanhCong from "../../layout/dangKyThanhCong";
 import KhachHang from "../../layout/khachHang";
 import DatLich from "../../layout/datLich";
+import ThanhToan from "../../layout/thanhToan";
+import ThanhToanMyPham from "../../layout/thanhToanMyPham";
 
 export default class StaffRouter extends Component {
     handleInputURL = (accountType, match) => {
@@ -32,7 +34,16 @@ export default class StaffRouter extends Component {
                             exact
                             component={DatLich}
                         />
-
+                        <Route
+                            path={`${match}/thanh-toan`}
+                            exact
+                            component={ThanhToan}
+                        />
+                        <Route
+                            path={`${match}/thanh-toan-mp`}
+                            exact
+                            component={ThanhToanMyPham}
+                        />
 
                         {/* route trang home cho phần Staff */}
                         <Route
@@ -52,10 +63,12 @@ export default class StaffRouter extends Component {
                                                 </span>
                                             </Link>
                                             <Link
-                                                to="/staff/dat-lich"
+                                                to="/staff/thanh-toan"
                                                 className="staff__feature__item staff__feature__item--blue"
                                             >
-                                                <span>Đặt Lịch</span>
+                                                <span>
+                                                    Thanh Toán <br /> Dịch Vụ
+                                                </span>
                                             </Link>
                                         </div>
                                         <div className="">
@@ -67,6 +80,16 @@ export default class StaffRouter extends Component {
                                                     Quản Lý <br /> Khách Hàng
                                                 </span>
                                             </Link>
+                                            <Link
+                                                to="/staff/thanh-toan-mp"
+                                                className="staff__feature__item staff__feature__item--violet"
+                                            >
+                                                <span>
+                                                    Thanh Toán <br /> Mỹ Phẩm
+                                                </span>
+                                            </Link>
+                                        </div>
+                                        <div className="">
                                             <Link
                                                 to="../"
                                                 className="staff__feature__item staff__feature__item--yellow"

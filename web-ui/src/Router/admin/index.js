@@ -13,6 +13,7 @@ import QuanLyNhanVien from "../../layout/quanLyNhanVien";
 import QuanLyTaiKhoan from "../../layout/quanLyTaiKhoan";
 import history from "../../history";
 import QuanLyKhachHang from "../../layout/quanLyKhachHang";
+import QuanLyDichVu from "../../layout/quanLyDichVu";
 
 const { SubMenu } = Menu;
 
@@ -71,6 +72,11 @@ export default class AdminRouter extends Component {
                             exact
                             component={QuanLyKhachHang}
                         />
+                        <Route
+                            path={`${match}/quan-ly-dich-vu`}
+                            exact
+                            component={QuanLyDichVu}
+                        />
                     </Fragment>
                 );
                 break;
@@ -90,7 +96,7 @@ export default class AdminRouter extends Component {
                     style={{
                         width: "100%",
                         display: "flex",
-                        height: "100vh"
+                        height: "100vh",
                     }}
                 >
                     <div
@@ -132,14 +138,13 @@ export default class AdminRouter extends Component {
                                         Kho Mỹ Phẩm
                                     </Link>
                                 </Menu.Item>
-                                <Menu.Item key="10">
-                                    <Link to="/admin/quan-ly-nhap-kho">
-                                        Nhập Kho
-                                    </Link>
-                                </Menu.Item>
                             </SubMenu>
                             <SubMenu key="sub3" title="Quản Lý Dịch Vụ">
-                                <Menu.Item key="5">Danh Mục Dịch Vụ</Menu.Item>
+                                <Menu.Item key="5">
+                                    <Link to="/admin/quan-ly-dich-vu">
+                                        Danh Mục Dịch Vụ
+                                    </Link>
+                                </Menu.Item>
                                 <Menu.Item key="6">Khuyến Mãi</Menu.Item>
                             </SubMenu>
                             <Menu.Item key="7">Thống Kê</Menu.Item>

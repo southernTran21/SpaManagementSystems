@@ -1,0 +1,186 @@
+.thanh-toan {
+    padding: 1rem 2rem;
+    @include flexBox(space-between);
+    &__option {
+        border: 2px solid $primary-color;
+        padding: 2rem;
+        border-radius: 15px;
+        &__item {
+            @include flexBox(space-between, flex-start, column);
+            height: 5.5rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    }
+    &__left {
+        width: 25%;
+    }
+    &__selection {
+        border: 2px solid $primary-color;
+        padding: 2rem;
+        border-radius: 15px;
+    }
+    &__khach-hang {
+        &__title {
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+        &__box-input {
+            margin-top: 1rem;
+            @include flexBox(space-between, center);
+            input {
+                font-size: 1.4rem;
+                width: 75%;
+            }
+        }
+        &__button {
+            font-weight: bold;
+            width: calc(25% - 2%);
+            background-color: $primary-color;
+            text-align: center;
+            padding: 0.7rem 0;
+            border-radius: 7px;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+    }
+    &__thong-tin {
+        margin-top: 1rem;
+        &--error {
+            color: red;
+        }
+        &__item {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            :nth-child(1) {
+                font-weight: bold;
+                width: 40%;
+            }
+        }
+    }
+    &__right {
+        width: calc(75% - 2%);
+    }
+    &__data {
+        border: 1px solid $primary-color;
+        max-height: 60rem;
+        min-height: 60rem;
+        border-radius: 7px;
+        &__head {
+            @include flexBox();
+            font-weight: bold;
+            background-color: $primary-color;
+            padding: 1rem 0;
+        }
+        &__item {
+            @include flexBox();
+            padding: 1rem 0;
+            border-bottom: 1px solid #c1c1c1;
+            &:nth-last-child(1) {
+                border-bottom: none;
+            }
+        }
+        &__column1 {
+            width: 5%;
+            @include centerFlexBox();
+        }
+        &__column2 {
+            width: 30%;
+        }
+        &__column3 {
+            width: 20%;
+        }
+        &__column4 {
+            width: 25%;
+        }
+        &__column5 {
+            width: 20%;
+        }
+        &__colum1,
+        &__colum2,
+        &__colum3,
+        &__colum4,
+        &__colum5 {
+            padding: 0 1%;
+        }
+    }
+    &__chi-tiet {
+        @include flexBox(flex-end);
+        margin-top: 2rem;
+        &__total {
+            font-weight: bold;
+            font-size: 2rem;
+            @include flexBox();
+            :nth-child(1) {
+                width: 13rem;
+            }
+            :nth-child(2) {
+                width: 20rem;
+                text-align: end;
+            }
+        }
+    }
+    &__button {
+        @include flexBox(flex-end);
+        margin-top: 2rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        span {
+            background-color: $primary-color;
+            cursor: pointer;
+            padding: 1rem 2rem;
+            border-radius: 7px;
+            color: white;
+        }
+    }
+}
+.thanh-toan-mp {
+    padding: 2rem;
+    @include flexBox(space-between);
+    &__data {
+        margin-top: 1rem;
+    }
+    &__item {
+        @include flexBox(space-between, center);
+        border-bottom: 1px solid rgb(155, 155, 155);
+        padding: 1.5rem 0;
+        width: 100%;
+        :nth-child(2) {
+            cursor: pointer;
+            margin-right: 2rem;
+        }
+        :nth-child(1) {
+            font-size: 1.4rem;
+            font-weight: bold;
+            width: 80%;
+        }
+    }
+    &__column1 {
+        width: 5%;
+        @include centerFlexBox();
+    }
+    &__column2 {
+        width: 30%;
+    }
+    &__column3 {
+        width: 20%;
+        @include centerFlexBox();
+    }
+    &__column4 {
+        width: 15%;
+        @include centerFlexBox();
+    }
+    &__column5 {
+        width: 20%;
+        @include centerFlexBox();
+    }
+    &__column6 {
+        width: 10%;
+        @include centerFlexBox();
+        :nth-child(1){
+            cursor: pointer;
+        }
+    }
+}

@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Models
 {
-	public class Kho
+	public class PhieuNhap
 	{
 		public string id { get; set; }
 		public int idMyPham { get; set; }
 		public int SoLuong { get; set; }
+		public string NgayNhap { get; set; }
 	}
 }

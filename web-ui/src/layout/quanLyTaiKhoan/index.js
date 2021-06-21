@@ -13,16 +13,7 @@ export default class QuanLyTaiKhoan extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            account: [
-                {
-                    id: "",
-                    username: "",
-                    password: "",
-                    accountName: "",
-                    idQuyen: "",
-                    status: "",
-                },
-            ],
+            account: [],
         };
     }
     componentDidMount() {
@@ -53,14 +44,6 @@ export default class QuanLyTaiKhoan extends Component {
                                 size="middle"
                                 onSearch={onSearch}
                             />
-                        </div>
-                        <div
-                            className="ql-nhan-vien__them-moi"
-                            onClick={() => {
-                                this.showModal();
-                            }}
-                        >
-                            <span>Thêm Mới</span>
                         </div>
                     </div>
                     <div className="ql-nhan-vien__data">
@@ -103,7 +86,7 @@ export default class QuanLyTaiKhoan extends Component {
                                             {result.accountName}
                                         </div>
                                         <div className="ql-nhan-vien__column5">
-                                            {result.idQuyen}
+                                            {result.Quyen}
                                         </div>
                                         <div className="ql-nhan-vien__column6">
                                             {result.status == true

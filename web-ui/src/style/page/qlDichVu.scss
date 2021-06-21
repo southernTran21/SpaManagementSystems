@@ -1,10 +1,7 @@
-.ql-khach-hang{
+.dich-vu{
     padding: 1rem;
-    &__search-box{
-        @include flexBox(flex-end, center);
-    }
-    &__table-data{
-        margin-top: 1.5rem;
+    &__data{
+        margin-top: 2rem;
     }
     &__column1{
         width: 5%;
@@ -14,15 +11,17 @@
         width: 25%;
     }
     &__column3{
-        width: 25%;
+        width: 35%;
     }
     &__column4{
         width: 15%;
     }
     &__column5{
-        width: 15%;
+        width: 10%;
+        @include centerFlexBox();
     }
     &__column6{
-        width: 15%;
+        width: 10%;
+        @include centerFlexBox();
     }
 }

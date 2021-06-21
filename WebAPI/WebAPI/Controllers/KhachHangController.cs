@@ -42,6 +42,49 @@ namespace WebAPI.Controllers
 			}
 			return new JsonResult(table);
 		}//done
+
+		[HttpGet("getallcus")]
+		public JsonResult GetAllCus(string id)
+		{
+			string query = @"select * from KhachHang as a , (select idKhachHang, COUNT(id) as SLDL from LichHen where Status = 0 group by LichHen.idKhachHang) as b, (select idKhachHang, COUNT(id) as SLDT from LichHen where Status = 4 group by LichHen.idKhachHang) as c where a.id = b.idKhachHang and a.id = c.idKhachHang";
+			DataTable table = new DataTable();
+			string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+			SqlDataReader myreader;
+			using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+			{
+				myCon.Open();
+				using (SqlCommand myCommand = new SqlCommand(query, myCon))
+				{
+					myreader = myCommand.ExecuteReader();
+					table.Load(myreader);
+					myreader.Close();
+					myCon.Close();
+				}
+			}
+			return new JsonResult(table);
+		}//done
+
+		[HttpGet("{id}")]
+		public JsonResult GetInfoCus(string id)
+		{
+			string query = @"select * from KhachHang where id like '%"+id+"%' or DienThoai like '%"+id+"%'";
+			DataTable table = new DataTable();
+			string sqlDataSource = _configuration.GetConnectionString("DBConnection");
+			SqlDataReader myreader;
+			using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+			{
+				myCon.Open();
+				using (SqlCommand myCommand = new SqlCommand(query, myCon))
+				{
+					myreader = myCommand.ExecuteReader();
+					table.Load(myreader);
+					myreader.Close();
+					myCon.Close();
+				}
+			}
+			return new JsonResult(table);
+		}//done
+
 		[HttpPost]
 		public JsonResult Post(KhachHang value)
 		{
